@@ -3,7 +3,7 @@ import Component from '../View/Component.js'
 import ComponentData from '@/View/ComponentData.js'
 
 export default class ComponentInterface extends Component {
-    name: Reservation = Reservation.Children
+    name: Reservation = Reservation.Dataset
     lists: string[] = []
 
     constructor(data: ComponentData) {

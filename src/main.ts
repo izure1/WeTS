@@ -6,3 +6,6 @@
 // new Vue({
 //   render: h => h(App),
 // }).$mount('#app')
+import WeJS from './WeJS.js'
+
+export default WeJS

@@ -4,8 +4,8 @@ import Pairs from '@/Utils/Pairs.js'
 
 class PhysicsCollision extends EventEmitter {
     static DefaultCollider: string = 'default'
-    private collisions: string[][]
-    private colliders: string[]
+    collisions: string[][]
+    colliders: string[]
 
     constructor() {
         super()
@@ -72,12 +72,19 @@ class PhysicsCollision extends EventEmitter {
         this.emit('delete-collision')
     }
 
+    /**
+     * 
+     * @param colliders     콜라이더 이름입니다.
+     * @description         인수로 넘긴 콜라이더끼리의 충돌필터값을 계산하여 반환합니다.
+     */
     between(...colliders: string[]): number {
-        // const filters: number[] = colliders.map((collider: string) => this.addCollider(collider))
-        // const filter: number = filters.reduce((a: number, b: number) => (a | b), (filters || []))
-        // return filter
+        if (!colliders.length)
+            return 0
+        const initialValue: number = this.getCollisionFilter(colliders[0])
         return colliders
-            .map((collider: string) => this.addCollider(colider))
-            .reduce((a: number, b: number): number => (a | b), (colliders || []))
+            .map((collider: string) => this.addCollider(collider))
+            .reduce((a: number, b: number): number => (a | b), initialValue)
     }
 }
+
+export default PhysicsCollision

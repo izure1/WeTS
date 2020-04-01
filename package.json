@@ -1,5 +1,5 @@
 {
-  "name": "wejs-typescript",
+  "name": "wets",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -17,7 +17,8 @@
     "matter-js": "0.14.2",
     "when-dom-ready": "1.2.12",
     "shortid": "2.2.15",
-    "eventemitter3": "4.0.0"
+    "eventemitter3": "4.0.0",
+    "resize-observer-polyfill": "1.5.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "2.24.0",

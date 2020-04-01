@@ -1,6 +1,7 @@
 import Matter from 'matter-js'
 import View from '@/View/View.js'
 import Scene from './Scene.js'
+import PhysicsCollision from './ScenePhysicsCollision.js'
 
 interface Gravity {
     x: number
@@ -13,8 +14,9 @@ class ScenePhysics {
     private lists: View[]
     private runner: Matter.Runner
     private engine: Matter.Engine
-    private world: Matter.World
     private table: Map<Matter.Body, View>
+    world: Matter.World
+    collision: PhysicsCollision
 
     /**
      * 
@@ -23,9 +25,8 @@ class ScenePhysics {
      */
     static updateRender(lists: View[]): void {
         for (const view of lists) {
-            if (view.component.physics &&
-                view.component.physics.vue)
-                view.component.physics.vue.update()
+            if (Object.prototype.hasOwnProperty.call(view.component, 'physics'))
+                view.component.physics.update()
         }
     }
 
@@ -80,9 +81,7 @@ class ScenePhysics {
         this.engine = Matter.Engine.create()
         this.world = this.engine.world
         this.table = new Map
-
-        // TODO
-        //this.collision = new ScenePhysicsCollision
+        this.collision = new PhysicsCollision
         
         // 이벤트를 핸들링합니다.
         Matter.Events.on(this.runner, 'afterUpdate', (): void => ScenePhysics.updateRender(this.lists))

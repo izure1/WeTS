@@ -1,9 +1,9 @@
 import Matter from 'matter-js'
-import Preloader from './Utils/Preloader.js'
-import Searcher from './Utils/Searcher.js'
-import Sleep from './Utils/Sleep.js'
-import Tick from './Utils/Tick.js'
-import { Reservation } from './Components/Reservation.js'
+import Preloader from './Utils/Preloader'
+import Searcher from './Utils/Searcher'
+import Sleep from './Utils/Sleep'
+import Tick from './Utils/Tick'
+import { Reservation } from './Components/Reservation'
 
 export default {
     Preloader,

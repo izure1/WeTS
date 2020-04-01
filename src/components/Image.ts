@@ -4,18 +4,13 @@ import Component from '@/View/Component.js'
 import ComponentData from '@/View/ComponentData.js'
 import TransitionOption from './TransitionOption.js'
 
+type ImageSize = 'auto' | number
+
 export default class ComponentInterface extends Component implements TransitionOption {
-    name: Reservation = Reservation.Filter
-    blur: number = 0
-    brightness: number = 1
-    contrast: number = 1
-    grayscale: number = 0
-    invert: number = 0
-    opacity: number = 1
-    saturate: number = 1
-    sepia: number = 0
-    backgroundColor: string = 'transparent'
-    cursor: string = 'default'
+    name: Reservation = Reservation.Camera
+    src: string | null = null
+    width: ImageSize = 'auto'
+    height: ImageSize = 'auto'
     ease: EaseType = EaseType.Linear
     delay: number = 0
     duration: number = 0

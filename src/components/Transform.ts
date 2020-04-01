@@ -11,9 +11,6 @@ export default class ComponentInterface extends Component {
     rotateY: number = 0
     rotateZ: number = 0
     scale: number = 1
-    duration: number = 0
-    delay: number = 0
-    ease: string = 'linear'
 
     constructor(data: ComponentData) {
         super(data)

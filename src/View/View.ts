@@ -15,8 +15,8 @@ interface LifeCycle {
 }
 
 class View extends EventEmitter {
-    private uid: string = Random.shortid()
-    private lifecycle: LifeCycle = {
+    uid: string = Random.shortid()
+    lifecycle: LifeCycle = {
         preload: [],
         start: [],
         update: [],

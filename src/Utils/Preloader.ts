@@ -29,7 +29,7 @@ class Preloader {
      * @param el        대상 엘리먼트입니다.
      * @description     대상 엘리먼트가 로드되면 반환된 프로미스가 완료됩니다.
      */
-    static waitElement(el: HTMLElement): Promise<void> {
+    static waitElement(el: HTMLElement | Document): Promise<void> {
         return whenDomReady(el)
     }
 

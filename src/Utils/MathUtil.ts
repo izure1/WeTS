@@ -80,5 +80,27 @@ class Random {
 
 }
 
+class Compare {
+    /**
+     * 
+     * @param a         비교할 숫자입니다.
+     * @param b         비교할 숫자입니다.
+     * @description     a와 b 중 더 큰 값을 반환합니다.
+     */
+    static getBiggerNumber(a: number, b: number): number {
+        return a > b ? a : b
+    }
 
-export { Angle, Random }
+    /**
+     * 
+     * @param a         비교할 숫자입니다.
+     * @param b         비교할 숫자입니다.
+     * @description     a와 b 중 더 작은 값을 반환합니다.
+     */
+    static getSmallerNumber(a: number, b: number): number {
+        return a > b ? b : a
+    }
+}
+
+
+export { Angle, Random, Compare }

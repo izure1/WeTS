@@ -1,7 +1,7 @@
 type Level = string[]
 
 class LevelDesign {
-    static readonly PERSISTENT_LEVEL: string = 'main';
+    static readonly PersistentLevel: string = 'main';
     [key: string]: Level
     
     /**
