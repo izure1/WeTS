@@ -1,7 +1,7 @@
-import Component from './Component.js'
-import ComponentData from './ComponentData.js'
-import { Reservation } from '../Components/Reservation.js'
-import { ReservationMap } from '../Components/ReservationMap.js'
+import Component from './Component'
+import ComponentData from './ComponentData'
+import { Reservation } from '../Components/Reservation'
+import { ReservationMap } from '../Components/ReservationMap'
 
 class ComponentBuilder {
     private static readonly ReservationMap: typeof ReservationMap = ReservationMap

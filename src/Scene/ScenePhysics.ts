@@ -1,7 +1,6 @@
 import Matter from 'matter-js'
-import View from '@/View/View.js'
-import Scene from './Scene.js'
-import PhysicsCollision from './ScenePhysicsCollision.js'
+import View from '@/View/View'
+import PhysicsCollision from './ScenePhysicsCollision'
 
 interface Gravity {
     x: number
@@ -10,21 +9,20 @@ interface Gravity {
 }
 
 class ScenePhysics {
-    static DefaultGravity: Gravity = { x: 0, y: 0.98, scale: 1 }
-    private lists: View[]
-    private runner: Matter.Runner
-    private engine: Matter.Engine
-    private table: Map<Matter.Body, View>
-    world: Matter.World
-    collision: PhysicsCollision
+    static readonly DefaultGravity: Gravity = { x: 0, y: 0.98, scale: 1 }
+    private table: Map<Matter.Body, View> = new Map
+    readonly collision: PhysicsCollision = new PhysicsCollision
+    private runner: Matter.Runner = Matter.Runner.create()
+    private engine: Matter.Engine = Matter.Engine.create()
+    readonly world: Matter.World = this.engine.world
 
     /**
      * 
-     * @param lists     업데이트할 물리객체의 목록을 담은 배열입니다.
+     * @param table     업데이트할 물리객체의 목록을 담은 해시테이블입니다.
      * @description     배열을 순회하면서 렌더링을 시작합니다.
      */
-    static updateRender(lists: View[]): void {
-        for (const view of lists) {
+    static updateRender(table: Map<Matter.Body, View>): void {
+        for (const view of table.values()) {
             if (Object.prototype.hasOwnProperty.call(view.component, 'physics'))
                 view.component.physics.update()
         }
@@ -39,6 +37,16 @@ class ScenePhysics {
      */
     static addObjectToTable(table: Map<Matter.Body, View>, object: Matter.Body, body: View): void {
         table.set(object, body)
+    }
+
+    /**
+     * 
+     * @param table     Matter.Body 인스턴스를 키로 가지는 해시테이블입니다.
+     * @param object    Matter.Body 인스턴스입니다.
+     * @description     물리 시뮬레이터 해쉬테이블에 있는 Matter.Body 인스턴스를 제거합니다.
+     */
+    static dropObjectFromTable(table: Map<Matter.Body, View>, object: Matter.Body): void {
+        table.delete(object)
     }
 
     /**
@@ -75,17 +83,11 @@ class ScenePhysics {
         }
     }
 
-    constructor(scene: Scene) {
-        this.lists = []
-        this.runner = Matter.Runner.create()
-        this.engine = Matter.Engine.create()
-        this.world = this.engine.world
-        this.table = new Map
-        this.collision = new PhysicsCollision
-        
+    constructor() {
         // 이벤트를 핸들링합니다.
-        Matter.Events.on(this.runner, 'afterUpdate', (): void => ScenePhysics.updateRender(this.lists))
+        Matter.Events.on(this.runner, 'afterUpdate', (): void => ScenePhysics.updateRender(this.table))
         Matter.Events.on(this.world, 'createPhysicsBody', (e: any): void => ScenePhysics.addObjectToTable(this.table, e.object, e.body))
+        Matter.Events.on(this.world, 'destroyPhysicsBody', (e: any): void => ScenePhysics.dropObjectFromTable(this.table, e.object))
         Matter.Events.on(this.engine, 'collisionStart', (e: any): void => ScenePhysics.onCollisionStart(this.table, e.pairs))
         Matter.Events.on(this.engine, 'collisionEnd', (e: any): void => ScenePhysics.onCollisionEnd(this.table, e.pairs))
 

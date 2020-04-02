@@ -1,13 +1,12 @@
-import Scene from './Scene.js'
-import ParticleBody from '@/Particle/ParticleBody.js'
+import Scene from './Scene'
+import ParticleBody from '@/Particle/ParticleBody'
 
 class SceneParticle {
     private scene: Scene
-    emitters: ParticleBody[][]
+    readonly emitters: ParticleBody[][] = []
 
     constructor(scene: Scene) {
         this.scene = scene
-        this.emitters = []
     }
 }
 

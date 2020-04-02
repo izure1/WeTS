@@ -1,10 +1,10 @@
 import EventEmitter from 'eventemitter3'
-import { Random } from '@/Utils/MathUtil.js'
-import { Reservation } from '@/Components/Reservation.js'
-import Tick from '@/Utils/Tick.js'
-import ComponentList from './ComponentList.js'
-import ComponentFactory from './ComponentFactory.js'
-import LevelDesign from './LevelDesign.js'
+import { Random } from '@/Utils/MathUtil'
+import { Reservation } from '@/Components/Reservation'
+import Tick from '@/Utils/Tick'
+import ComponentList from './ComponentList'
+import ComponentFactory from './ComponentFactory'
+import LevelDesign from './LevelDesign'
 
 interface LifeCycle {
     preload: Function[]
@@ -15,19 +15,19 @@ interface LifeCycle {
 }
 
 class View extends EventEmitter {
-    uid: string = Random.shortid()
-    lifecycle: LifeCycle = {
+    readonly uid: string = Random.shortid()
+    readonly lifecycle: LifeCycle = {
         preload: [],
         start: [],
         update: [],
         destroy: [],
         dataTransfer: new Map,
     }
+    readonly tags: string[] = []
+    readonly levelDesign: LevelDesign = new LevelDesign
+    readonly component: ComponentList = new ComponentList
     id: null | string = null
-    tags: string[] = []
-    level: string = LevelDesign.PERSISTENT_LEVEL
-    levelDesign: LevelDesign = new LevelDesign
-    component: ComponentList = new ComponentList
+    level: string = LevelDesign.PersistentLevel
 
     constructor() {
         super()

@@ -1,12 +1,15 @@
-import { Reservation } from './Reservation.js'
-import Component from '../View/Component.js'
-import Children from './Children.js'
-import Camera from './Camera.js'
-import Transform from './Transform.js'
-import Filter from './Filter.js'
-import Dataset from './Dataset.js'
-import Image from './Image.js'
-import Physics from './Physics.js'
+import { Reservation } from './Reservation'
+import Component from '../View/Component'
+import Children from './Children'
+import Camera from './Camera'
+import Transform from './Transform'
+import Filter from './Filter'
+import Dataset from './Dataset'
+import Image from './Image'
+import Physics from './Physics'
+import Rect from './Rect'
+import Text from './Text'
+import Html from './Html'
 
 type ComponentMap = { [name in Reservation]: typeof Component }
 export const ReservationMap: ComponentMap = {
@@ -17,4 +20,7 @@ export const ReservationMap: ComponentMap = {
     [Reservation.Dataset]: Dataset,
     [Reservation.Image]: Image,
     [Reservation.Physics]: Physics,
+    [Reservation.Rect]: Rect,
+    [Reservation.Text]: Text,
+    [Reservation.Html]: Html,
 }

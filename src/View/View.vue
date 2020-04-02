@@ -78,7 +78,7 @@
                 <component-text v-if="     hasComponent('text')" :app="app" :scene="scene" :body="body" />
                 <component-html v-if="     hasComponent('html')" :app="app" :scene="scene" :body="body" />
                 <component-image v-if="    hasComponent('image')" :app="app" :scene="scene" :body="body" />
-                <component-video v-if="    hasComponent('video')" :app="app" :scene="scene" :body="body" />
+                <!-- <component-video v-if="    hasComponent('video')" :app="app" :scene="scene" :body="body" /> -->
                 <component-rect v-if="     hasComponent('rect')" :app="app" :scene="scene" :body="body" />
             </div>
 
@@ -87,7 +87,7 @@
             -->
             <div class="we-components-hidden">
                 <component-physics v-if="  hasComponent('physics')" :app="app" :scene="scene" :body="body" />
-                <component-audio v-if="    hasComponent('audio')" :app="app" :scene="scene" :body="body" />
+                <!-- <component-audio v-if="    hasComponent('audio')" :app="app" :scene="scene" :body="body" /> -->
                 <component-particle v-if=" hasComponent('particle')" :app="app" :scene="scene" :body="body" />
             </div>
 
@@ -112,13 +112,13 @@
             }"
         >
             <!-- 파티클을 보여줍니다. 이 기능은 물리효과를 필요로 하기 때문에, 객체의 타입이 씬일 경우에만 동작합니다. -->
-            <particle-renderer
+            <!-- <particle-renderer
                 v-if="isScene"
                 :emitters="body.particle.emitters"
                 :app="app"
                 :scene="scene"
                 :body="body"
-            />
+            /> -->
             <!-- 자식 객체를 보여줍니다 -->
             <we-body
                 v-for="children in body.component.children.lists"
@@ -126,7 +126,7 @@
                 :app="app"
                 :scene="body"
                 :body="children"
-                :requiredLevels="body.levelDesign.getRequired(body.level)"
+                :requiredLevels="LevelDesign.getRequireds(body.levelDesign, body.level)"
                 @onchangesize="onChangeSize" />
         </div>
 
@@ -136,14 +136,19 @@
 <script lang="ts">
 import ResizeObserver from 'resize-observer-polyfill'
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
-import { Compare } from '@/Utils/MathUtil.js'
-import App from '@/App/App.js'
-import View from '@/View/View.js'
-import ViewComponent from '@/View/Component.js'
-import Scene from '../Scene/Scene.js'
-import { SceneType } from '@/Scene/SceneType.js'
+import { Compare } from '@/Utils/MathUtil'
+import LevelDesign from '@/View/LevelDesign'
+import App from '@/App/App'
+import View from '@/View/View'
+import WeComponent from '@/View/Component'
+import Scene from '../Scene/Scene'
+import { SceneType } from '@/Scene/SceneType'
 import ParticleRenderer from '@/Components/ParticleRenderer.vue'
 import ComponentImage from '@/Components/Image.vue'
+import ComponentPhysics from '@/Components/Physics.vue'
+import ComponentRect from '@/Components/Rect.vue'
+import ComponentText from '@/Components/Text.vue'
+import ComponentHtml from '@/Components/Html.vue'
 
 type Vector = [number, number]
 
@@ -152,6 +157,10 @@ type Vector = [number, number]
     components: {
         ParticleRenderer,
         ComponentImage,
+        ComponentPhysics,
+        ComponentRect,
+        ComponentText,
+        ComponentHtml,
     }
 })
 export default class WeBody extends Vue {
@@ -160,6 +169,7 @@ export default class WeBody extends Vue {
     @Prop() private body!: View
     @Prop() private requiredLevels!: string[]
 
+    private LevelDesign: typeof LevelDesign = LevelDesign
     private updateRequestId: string | null = null
     private sizeObserver: ResizeObserver | null = null
     private sizeSelf: Vector = [0, 0]
@@ -169,12 +179,12 @@ export default class WeBody extends Vue {
     private SCENE_3D: number = SceneType.Scene3D
 
     get centerPointX(): number {
-        const transform: ViewComponent = this.body.component.transform
+        const transform: WeComponent = this.body.component.transform
         return transform.x - (this.sizeSelf[0] / 2)
     }
 
     get centerPointY(): number {
-        const transform: ViewComponent = this.body.component.transform
+        const transform: WeComponent = this.body.component.transform
         return transform.y - (this.sizeSelf[1] / 2)
     }
 
@@ -193,7 +203,7 @@ export default class WeBody extends Vue {
             const x: number = parseFloat(style.width)
             const y: number = parseFloat(style.height)
             this.sizeSelf = [x, y]
-            this.$emit('onsizechange', this.sizeSelf)
+            this.$emit('onchangesize', this.sizeSelf)
         }
         this.sizeObserver = new ResizeObserver(onResize)
         this.sizeObserver.observe(this.$el)
@@ -247,8 +257,15 @@ export default class WeBody extends Vue {
         `
     }
 
+    /**
+     * @description     사용자 입력 이벤트를 발생시킵니다.
+     */
     private emitUserInput(e: Event): void {
         this.body.emit(e.type, e)
+    }
+
+    private onChangeSize(size: Vector) {
+        this.sizeChild = size
     }
 
     /**
@@ -271,12 +288,12 @@ export default class WeBody extends Vue {
         return Object.prototype.hasOwnProperty.call(this.body.component, name)
     }
 
-    @Watch('selfSize')
+    @Watch('sizeSelf')
     private onChangeSelfSize() {
         this.calcSizeMax()
     }
 
-    @Watch('selfChild')
+    @Watch('sizeChild')
     private onChangeSelfChild() {
         this.calcSizeMax()
     }

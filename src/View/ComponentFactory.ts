@@ -1,6 +1,6 @@
-import Component from './Component.js'
-import ComponentBuilder from './ComponentBuilder.js'
-import { Reservation } from '../Components/Reservation.js'
+import Component from './Component'
+import ComponentBuilder from './ComponentBuilder'
+import { Reservation } from '../Components/Reservation'
 
 class ComponentFactory {
     static create(name: Reservation): Component {

@@ -1,5 +1,5 @@
-import Scene from './Scene.js'
-import { SceneType } from './SceneType.js'
+import Scene from './Scene'
+import { SceneType } from './SceneType'
 
 class Scene3d extends Scene {
     private type: SceneType

@@ -1,4 +1,4 @@
-import Component from './Component.js'
+import Component from './Component'
 
 class ComponentList {
     [key: string]: Component
@@ -9,6 +9,10 @@ class ComponentList {
      * @description         컴포넌트 인스턴스를 리스트에 추가합니다.
      */
     static add(componentList: ComponentList, component: Component): void {
+        if (!(componentList instanceof ComponentList))
+            throw 'The first parameter must be a ComponentList instance.'
+        if (!(component instanceof Component))
+            throw 'The second parameter must be a Component instance.'
         componentList[component.name] = component
     }
 }

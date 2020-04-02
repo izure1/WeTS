@@ -1,10 +1,10 @@
-import { Reservation } from './Reservation.js'
-import Component from '../View/Component.js'
-import ComponentData from '@/View/ComponentData.js'
+import { Reservation } from './Reservation'
+import Component from '../View/Component'
+import ComponentData from '@/View/ComponentData'
 
 export default class ComponentInterface extends Component {
-    name: Reservation = Reservation.Dataset
-    lists: string[] = []
+    readonly name: Reservation = Reservation.Dataset
+    readonly lists: string[] = []
 
     constructor(data: ComponentData) {
         super(data)

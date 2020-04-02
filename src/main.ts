@@ -1,11 +1,35 @@
-// import Vue from 'vue'
-// import App from './App.vue'
+import Matter from 'matter-js'
+import ArrayExtra from '@/Utils/ArrayExtra'
+import ObjectExtra from '@/Utils/ObjectExtra'
+import Pairs from '@/Utils/Pairs'
+import Preloader from '@/Utils/Preloader'
+import Searcher from '@/Utils/Searcher'
+import Sleep from '@/Utils/Sleep'
+import Tick from '@/Utils/Tick'
+import App from '@/App/App'
+import Scene2d from '@/Scene/Scene2d'
+import Scene3d from '@/Scene/Scene3d'
+import View from '@/View/View'
+import ComponentList from '@/View/ComponentList'
+import Component from '@/View/Component'
+import ComponentFactory from '@/View/ComponentFactory'
+import { Reservation } from '@/Components/Reservation'
 
-// Vue.config.productionTip = false
-
-// new Vue({
-//   render: h => h(App),
-// }).$mount('#app')
-import WeJS from './WeJS.js'
-
-export default WeJS
+export {
+    ArrayExtra,
+    ObjectExtra,
+    Pairs,
+    Preloader,
+    Searcher,
+    Sleep,
+    Tick,
+    App,
+    Scene2d,
+    Scene3d,
+    View,
+    ComponentList,
+    Component,
+    ComponentFactory,
+    Matter,
+    Reservation,
+}

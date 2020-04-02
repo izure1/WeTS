@@ -5,14 +5,14 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 import Matter from 'matter-js'
-import MatterExtra from '@/Utils/MatterExtra.js'
-import WeComponent from '@/View/Component.js'
-import App from '@/App/App.js'
-import Scene from '@/Scene/Scene.js'
-import View from '@/View/View.js'
-import PhysicsCollision from '@/Scene/ScenePhysicsCollision.js'
-import Pairs from '@/Utils/Pairs.js'
-import { Angle } from '../Utils/MathUtil.js'
+import MatterExtra from '@/Utils/MatterExtra'
+import WeComponent from '@/View/Component'
+import App from '@/App/App'
+import Scene from '@/Scene/Scene'
+import View from '@/View/View'
+import PhysicsCollision from '@/Scene/ScenePhysicsCollision'
+import Pairs from '@/Utils/Pairs'
+import { Angle } from '../Utils/MathUtil'
 
 @Component
 export default class Camera extends Vue {
@@ -139,6 +139,7 @@ export default class Camera extends Vue {
     private destroyPhysics(): void {
         if (this.physicsObject) {
             Matter.World.remove(this.scene.physics.world, this.physicsObject, true)
+            Matter.Events.trigger(this.scene.physics.world, 'destroyPhysicsBody', { object: this.physicsObject })
             this.physicsObject = null
         }
     }
@@ -177,6 +178,73 @@ export default class Camera extends Vue {
         transform.rotateZ = Angle.radianToDegree(this.physicsObject.angle)
         this.$nextTick(() => { this.tracking = true })
     }
+
+    /**
+     * @description         View 인스턴스의 transform 컴포넌트를 직접 수정할 경우, 물리를 추적하지 않습니다.
+     */
+    @Watch('body.component.transform.x')
+    private onChangeTransformX() {
+        if (this.tracking)
+            this.transform()
+    }
+
+    @Watch('body.component.transform.y')
+    private onChangeTransformY() {
+        if (this.tracking)
+            this.transform()
+    }
+
+    @Watch('body.component.transform.rotateZ')
+    private onChangeTransformRotateZ() {
+        if (this.tracking)
+            this.transform()
+    }
+
+    @Watch('body.component.transform.scale')
+    private onChangeTransformScale() {
+        this.transform()
+    }
+
+    @Watch('body.component.physics.type')
+    private onChangePhysicsType() {
+        this.setStatic()
+    }
+
+    @Watch('body.component.physics.friction')
+    private onChangePhysicsFriction() {
+        this.setFriction()
+    }
+
+    @Watch('body.component.physics.frictionAir')
+    private onChangePhysicsFrictionAir() {
+        this.setFriction()
+    }
+
+    @Watch('body.component.physics.frictionStatic')
+    private onChangePhysicsFrictionStatic() {
+        this.setFriction()
+    }
+
+    @Watch('body.component.physics.restitution')
+    private onChangePhysicsRestitution() {
+        this.setRestitution()
+    }
+
+    @Watch('body.component.physics.fixedRotation')
+    private onChangePhysicsFixed() {
+        this.setFixedRotation()
+    }
+
+    @Watch('body.component.physics.colliders')
+    private onChangePhysicsColliders() {
+        this.setCollider()
+    }
+
+    @Watch('bodySize')
+    private onChangeBodysize() {
+        this.createPhysics()
+    }
+
 
     created(): void {
         this.scene.physics.collision.on('collision-update', this.setCollider)

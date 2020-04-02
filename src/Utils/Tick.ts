@@ -1,4 +1,4 @@
-import { Random } from './MathUtil.js'
+import { Random } from './MathUtil'
 
 interface Request {
     step: number

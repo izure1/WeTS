@@ -1,9 +1,9 @@
-import { Reservation } from './Reservation.js'
-import Component from '@/View/Component.js'
-import ComponentData from '@/View/ComponentData.js'
+import { Reservation } from './Reservation'
+import Component from '@/View/Component'
+import ComponentData from '@/View/ComponentData'
 
 export default class ComponentInterface extends Component {
-    name: Reservation = Reservation.Camera
+    readonly name: Reservation = Reservation.Camera
     x: number = 0
     y: number = 0
     z: number = 0

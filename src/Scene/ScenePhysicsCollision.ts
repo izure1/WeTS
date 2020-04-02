@@ -1,16 +1,14 @@
 import EventEmitter from 'eventemitter3'
-import ArrayExtra from '@/Utils/ArrayExtra.js'
-import Pairs from '@/Utils/Pairs.js'
+import ArrayExtra from '@/Utils/ArrayExtra'
+import Pairs from '@/Utils/Pairs'
 
 class PhysicsCollision extends EventEmitter {
-    static DefaultCollider: string = 'default'
-    collisions: string[][]
-    colliders: string[]
+    static readonly DefaultCollider: string = 'default'
+    readonly collisions: string[][] = Pairs.create()
+    readonly colliders: string[] = []
 
     constructor() {
         super()
-        this.collisions = Pairs.create()
-        this.colliders = []
         ArrayExtra.add(this.colliders, PhysicsCollision.DefaultCollider)
     }
 

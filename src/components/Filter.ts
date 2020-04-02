@@ -1,11 +1,11 @@
-import { Reservation } from './Reservation.js'
-import { EaseType } from '@/Utils/ease.js'
-import Component from '@/View/Component.js'
-import ComponentData from '@/View/ComponentData.js'
-import TransitionOption from './TransitionOption.js'
+import { Reservation } from './Reservation'
+import { EaseType } from '@/Utils/ease'
+import Component from '@/View/Component'
+import ComponentData from '@/View/ComponentData'
+import TransitionOption from './TransitionOption'
 
 export default class ComponentInterface extends Component implements TransitionOption {
-    name: Reservation = Reservation.Filter
+    readonly name: Reservation = Reservation.Filter
     blur: number = 0
     brightness: number = 1
     contrast: number = 1

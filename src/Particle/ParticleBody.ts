@@ -1,4 +1,4 @@
-import Particle from './Particle.js'
+import Particle from './Particle'
 import Matter from 'matter-js'
 
 export default interface ParticleBody {

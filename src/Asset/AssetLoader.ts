@@ -1,4 +1,4 @@
-import Asset from './Asset.js'
+import Asset from './Asset'
 
 class AssetLoader {
 

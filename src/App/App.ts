@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import Scene from '@/Scene/Scene.js'
-import Scene3d from '@/Scene/Scene3d.js'
-import ArrayExtra from '@/Utils/ArrayExtra.js'
-import Preloader from '@/Utils/Preloader.js'
-import Sleep from '@/Utils/Sleep.js'
+import Scene from '@/Scene/Scene'
+import Scene3d from '@/Scene/Scene3d'
+import ArrayExtra from '@/Utils/ArrayExtra'
+import Preloader from '@/Utils/Preloader'
+import Sleep from '@/Utils/Sleep'
 import screenfull from 'screenfull'
 import App from './App.vue'
 
@@ -13,8 +13,8 @@ class WeApp extends Scene3d {
     private width: number = 800
     private height: number = 450
     private perspective: number = 100
-    private element: HTMLElement | null = null
     private app: Vue | null = null
+    element: string | null = null
 
     constructor() {
         super()
@@ -38,7 +38,7 @@ class WeApp extends Scene3d {
         const scenes: Scene[] = this.component.children.lists
         ArrayExtra.clear(scenes)
         ArrayExtra.add(scenes, splashScene)
-        if (this.element)
+        if (!this.element)
             throw 'You must first initialize the element property.'
         this.app = new Vue({
             el: this.element!,

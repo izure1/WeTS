@@ -51,10 +51,10 @@ class LevelDesign {
      * @param name              해당 레벨 이름입니다.
      * @description             해당 레벨을 필요로 하는 모든 레벨들을 배열로 반환합니다.
      */
-    static getRequired(design: LevelDesign, name: string): Level {
+    static getRequireds(design: LevelDesign, name: string): Level {
         const dependencies = LevelDesign.getRequiredSelf(design, name, new Set)
         return [...dependencies].sort()
     }
 }
 
-export default leveLDesign
+export default LevelDesign

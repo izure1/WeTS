@@ -1,4 +1,4 @@
-import { EaseType } from '@/Utils/ease.js'
+import { EaseType } from '@/Utils/ease'
 
 export default interface TransitionOption {
     ease: EaseType

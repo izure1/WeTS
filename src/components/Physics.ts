@@ -1,10 +1,10 @@
 import Matter from 'matter-js'
-import { Reservation } from './Reservation.js'
-import Component from '../View/Component.js'
-import ComponentData from '@/View/ComponentData.js'
+import { Reservation } from './Reservation'
+import Component from '../View/Component'
+import ComponentData from '@/View/ComponentData'
 
 export default class ComponentInterface extends Component {
-    name: Reservation = Reservation.Physics
+    readonly name: Reservation = Reservation.Physics
     friction: number = 1
     frictionAir: number = 0.01
     frictionStatic: number = 0.5
@@ -12,7 +12,7 @@ export default class ComponentInterface extends Component {
     isStatic: boolean = false
     isSensor: boolean = false
     fixedRotation: boolean = false
-    colliders: string[] = []
+    readonly colliders: string[] = []
 
     constructor(data: ComponentData) {
         super(data)
@@ -68,7 +68,6 @@ export default class ComponentInterface extends Component {
 
     update(): void {
         const vue: any = this.vue
-        if (vue)
-            vue.translate()
+        vue?.translate()
     }
 }

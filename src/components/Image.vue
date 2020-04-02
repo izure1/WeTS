@@ -24,9 +24,9 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import AssetLoader from '@/Asset/AssetLoader.js'
-import App from '@/App/App.js'
-import View from '@/View/View.js'
+import AssetLoader from '@/Asset/AssetLoader'
+import App from '@/App/App'
+import View from '@/View/View'
 
 @Component
 export default class Camera extends Vue {
@@ -35,6 +35,9 @@ export default class Camera extends Vue {
     @Prop() private body!: View
     private AssetLoader: typeof AssetLoader = AssetLoader
 
+    /**
+     * @description         주어진 값을 이미지 사이즈에 사용할 수 있는 형식으로 변환합니다.
+     */
     parseImageSize(v: string | number): string | number {
         v = Number(v)
         return isNaN(v) ? v : `${v}px`
@@ -43,6 +46,9 @@ export default class Camera extends Vue {
 </script>
 
 <style lang="scss" scoped>
+.image-background {
+    background-repeat: no-repeat;
+}
 .image-fake {
     visibility: hidden;
 }

@@ -1,5 +1,5 @@
 import EventEmitter from 'eventemitter3'
-import ParticleOption from './ParticleOption.js'
+import ParticleOption from './ParticleOption'
 
 class Particle extends EventEmitter implements ParticleOption {
     private naturalWidth: number = 0

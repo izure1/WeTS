@@ -1,6 +1,6 @@
-import View from '@/View/View.js'
-import Component from '@/View/Component.js'
-import ArrayExtra from '@/Utils/ArrayExtra.js'
+import View from '@/View/View'
+import Component from '@/View/Component'
+import ArrayExtra from '@/Utils/ArrayExtra'
 
 class Searcher {
     /**
