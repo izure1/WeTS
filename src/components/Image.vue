@@ -12,13 +12,13 @@
                 ${body.component.image.delay}ms`
         }"
         class="image-background">
-    <img
-        :src="AssetLoader.getUri(body.component.image.src)"
-        :style="{ 
-            width: parseImageSize(body.component.image.width),
-            height: parseImageSize(body.component.image.height),
-        }"
-        class="image-fake" />
+        <img
+            :src="AssetLoader.getUri(body.component.image.src)"
+            :style="{ 
+                width: parseImageSize(body.component.image.width),
+                height: parseImageSize(body.component.image.height),
+            }"
+            class="image-fake" />
     </div>
 </template>
 
@@ -29,7 +29,7 @@ import App from '@/App/App'
 import View from '@/View/View'
 
 @Component
-export default class Camera extends Vue {
+export default class VueComponent extends Vue {
     @Prop() private app!: App
     @Prop() private scene!: View
     @Prop() private body!: View
@@ -39,8 +39,8 @@ export default class Camera extends Vue {
      * @description         주어진 값을 이미지 사이즈에 사용할 수 있는 형식으로 변환합니다.
      */
     parseImageSize(v: string | number): string | number {
-        v = Number(v)
-        return isNaN(v) ? v : `${v}px`
+        const r = Number(v)
+        return isNaN(r) ? v : `${r}px`
     }
 }
 </script>

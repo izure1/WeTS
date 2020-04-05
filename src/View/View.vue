@@ -75,20 +75,20 @@
                 이 컴포넌트들은 position: static이므로, 위에서 아래로 순차대로 쌓입니다.
             -->
             <div class="we-components-visible">
-                <component-text v-if="     hasComponent('text')" :app="app" :scene="scene" :body="body" />
-                <component-html v-if="     hasComponent('html')" :app="app" :scene="scene" :body="body" />
-                <component-image v-if="    hasComponent('image')" :app="app" :scene="scene" :body="body" />
-                <!-- <component-video v-if="    hasComponent('video')" :app="app" :scene="scene" :body="body" /> -->
-                <component-rect v-if="     hasComponent('rect')" :app="app" :scene="scene" :body="body" />
+                <component-text     v-if="  hasComponent('text')"        :app="app" :scene="scene" :body="body" />
+                <component-html     v-if="  hasComponent('html')"        :app="app" :scene="scene" :body="body" />
+                <component-image    v-if="  hasComponent('image')"       :app="app" :scene="scene" :body="body" />
+                <component-video    v-if="  hasComponent('video')"       :app="app" :scene="scene" :body="body" />
+                <component-rect     v-if="  hasComponent('rect')"        :app="app" :scene="scene" :body="body" />
             </div>
 
             <!-- 
                 화면에 시각적으로 보이지 않는 컴포넌트를 이곳에 넣습니다.
             -->
             <div class="we-components-hidden">
-                <component-physics v-if="  hasComponent('physics')" :app="app" :scene="scene" :body="body" />
-                <!-- <component-audio v-if="    hasComponent('audio')" :app="app" :scene="scene" :body="body" /> -->
-                <component-particle v-if=" hasComponent('particle')" :app="app" :scene="scene" :body="body" />
+                <component-physics  v-if="  hasComponent('physics')"     :app="app" :scene="scene" :body="body" />
+                <component-audio    v-if="  hasComponent('audio')"       :app="app" :scene="scene" :body="body" />
+                <component-particle v-if="  hasComponent('particle')"    :app="app" :scene="scene" :body="body" />
             </div>
 
         </div>
@@ -145,6 +145,8 @@ import Scene from '../Scene/Scene'
 import { SceneType } from '@/Scene/SceneType'
 import ParticleRenderer from '@/Components/ParticleRenderer.vue'
 import ComponentImage from '@/Components/Image.vue'
+import ComponentVideo from '@/Components/Video.vue'
+import ComponentAudio from '@/Components/Audio.vue'
 import ComponentPhysics from '@/Components/Physics.vue'
 import ComponentRect from '@/Components/Rect.vue'
 import ComponentText from '@/Components/Text.vue'
@@ -157,6 +159,8 @@ type Vector = [number, number]
     components: {
         ParticleRenderer,
         ComponentImage,
+        ComponentVideo,
+        ComponentAudio,
         ComponentPhysics,
         ComponentRect,
         ComponentText,
@@ -185,7 +189,7 @@ export default class WeBody extends Vue {
 
     get centerPointY(): number {
         const transform: WeComponent = this.body.component.transform
-        return transform.y - (this.sizeSelf[1] / 2)
+        return -transform.y - (this.sizeSelf[1] / 2)
     }
 
     get isScene(): boolean {

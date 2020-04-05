@@ -2,7 +2,7 @@ import Matter from 'matter-js'
 import ArrayExtra from '@/Utils/ArrayExtra'
 import ObjectExtra from '@/Utils/ObjectExtra'
 import Pairs from '@/Utils/Pairs'
-import Preloader from '@/Utils/Preloader'
+import AssetLoader from '@/Asset/AssetLoader'
 import Searcher from '@/Utils/Searcher'
 import Sleep from '@/Utils/Sleep'
 import Tick from '@/Utils/Tick'
@@ -19,7 +19,7 @@ export {
     ArrayExtra,
     ObjectExtra,
     Pairs,
-    Preloader,
+    AssetLoader,
     Searcher,
     Sleep,
     Tick,

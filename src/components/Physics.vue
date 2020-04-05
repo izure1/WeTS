@@ -15,7 +15,7 @@ import Pairs from '@/Utils/Pairs'
 import { Angle } from '../Utils/MathUtil'
 
 @Component
-export default class Camera extends Vue {
+export default class VueComponent extends Vue {
     @Prop() private app!: App
     @Prop() private scene!: Scene
     @Prop() private body!: View
@@ -183,65 +183,65 @@ export default class Camera extends Vue {
      * @description         View 인스턴스의 transform 컴포넌트를 직접 수정할 경우, 물리를 추적하지 않습니다.
      */
     @Watch('body.component.transform.x')
-    private onChangeTransformX() {
+    private onChangeTransformX(): void {
         if (this.tracking)
             this.transform()
     }
 
     @Watch('body.component.transform.y')
-    private onChangeTransformY() {
+    private onChangeTransformY(): void {
         if (this.tracking)
             this.transform()
     }
 
     @Watch('body.component.transform.rotateZ')
-    private onChangeTransformRotateZ() {
+    private onChangeTransformRotateZ(): void {
         if (this.tracking)
             this.transform()
     }
 
     @Watch('body.component.transform.scale')
-    private onChangeTransformScale() {
+    private onChangeTransformScale(): void {
         this.transform()
     }
 
     @Watch('body.component.physics.type')
-    private onChangePhysicsType() {
+    private onChangePhysicsType(): void {
         this.setStatic()
     }
 
     @Watch('body.component.physics.friction')
-    private onChangePhysicsFriction() {
+    private onChangePhysicsFriction(): void {
         this.setFriction()
     }
 
     @Watch('body.component.physics.frictionAir')
-    private onChangePhysicsFrictionAir() {
+    private onChangePhysicsFrictionAir(): void {
         this.setFriction()
     }
 
     @Watch('body.component.physics.frictionStatic')
-    private onChangePhysicsFrictionStatic() {
+    private onChangePhysicsFrictionStatic(): void {
         this.setFriction()
     }
 
     @Watch('body.component.physics.restitution')
-    private onChangePhysicsRestitution() {
+    private onChangePhysicsRestitution(): void {
         this.setRestitution()
     }
 
     @Watch('body.component.physics.fixedRotation')
-    private onChangePhysicsFixed() {
+    private onChangePhysicsFixed(): void {
         this.setFixedRotation()
     }
 
     @Watch('body.component.physics.colliders')
-    private onChangePhysicsColliders() {
+    private onChangePhysicsColliders(): void {
         this.setCollider()
     }
 
     @Watch('bodySize')
-    private onChangeBodysize() {
+    private onChangeBodysize(): void {
         this.createPhysics()
     }
 

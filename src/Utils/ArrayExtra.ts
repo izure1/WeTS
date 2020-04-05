@@ -7,7 +7,7 @@ class ArrayExtra extends Array {
      * @description 검사할 배열에 추가할 요소가 없다면 추가합니다.
      */
     static add(array: any[], ...lists: any[]): void {
-        for (const t of [...lists]) {
+        for (const t of lists) {
             if (array.indexOf(t) !== -1) continue
             else array.push(t)
         }
@@ -31,7 +31,7 @@ class ArrayExtra extends Array {
      */
     static hasAll(array: any[], ...lists: any[]): boolean {
         let passed: boolean = true
-        for (const t of [...lists]) {
+        for (const t of lists) {
             if (!ArrayExtra.has(array, t)) {
                 passed = false
                 break
@@ -48,7 +48,7 @@ class ArrayExtra extends Array {
      */
     static hasAtLeast(array: any[], ...lists: any[]): boolean {
         let passed: boolean = false
-        for (const t of [...lists]) {
+        for (const t of lists) {
             if (ArrayExtra.has(array, t)) {
                 passed = true
                 break
@@ -64,7 +64,7 @@ class ArrayExtra extends Array {
      * @description     검사할 배열에 중복된 요소만 새로운 배열에 담아 반환합니다.
      */
     static duplicate(array: any[], ...lists: any[]): any[] {
-        return [...lists].filter(t => ArrayExtra.has(array, t))
+        return lists.filter(t => ArrayExtra.has(array, t))
     }
 
     /**
@@ -74,7 +74,7 @@ class ArrayExtra extends Array {
      * @description     검사할 배열에 중복되지 않은 요소만 새로운 배열에 담아 반환합니다.
      */
     static notDuplicate(array: any[], ...lists: any[]): any[] {
-        return [...lists].filter(t => !ArrayExtra.has(array, t))
+        return lists.filter(t => !ArrayExtra.has(array, t))
     }
 
     /**

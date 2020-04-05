@@ -13,7 +13,8 @@ export default class App extends Vue {
         const app: WeJS.App = new App // 새로운 viewport 만들기
         const scene: WeJS.Scene3d = new Scene3d // 새로운 씬 만들기
 
-        scene.onStart((transfer: Map<string, WeJS.View>): void => {
+        scene.onStart(async (transfer: Map<string, WeJS.View>): Promise<void> => {
+
             const text: WeJS.View = new View
 
             // 텍스트를 보여주기 위해 텍스트 컴포넌트를 생성합니다.
@@ -33,7 +34,7 @@ export default class App extends Vue {
             scene.launch(text)
             transfer.set('text', text)
 
-        }).onUpdate((transfer: Map<string, WeJS.View>, delta: number) => {
+        }).onUpdate(async (transfer: Map<string, WeJS.View>, delta: number): Promise<void> => {
 
             const text: WeJS.View = transfer.get('text')!
             text.component.text.content = `fps: ${~~(1000 / delta)}`
@@ -41,9 +42,9 @@ export default class App extends Vue {
         }).onDestroy(scene.clear)
 
         
-        Promise.resolve().then(async () => {
+        Promise.resolve().then(async (): Promise<void> => {
             // 앱이 부착될 element를 지정
-            app.element = '#app'
+            app.element = '#sample'
             app.size = [800, 500]
 
             // 앱에서 씬을 실행

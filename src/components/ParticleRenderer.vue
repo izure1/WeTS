@@ -26,7 +26,7 @@ import App from '@/App/App'
 import View from '@/View/View'
 
 @Component
-export default class ParticleRenderer extends Vue {
+export default class VueComponent extends Vue {
     @Prop() private emitters!: ParticleBody[][]
     @Prop() private app!: App
     @Prop() private scene!: View

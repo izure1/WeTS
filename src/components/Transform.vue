@@ -4,7 +4,7 @@ import App from '@/App/App'
 import View from '@/View/View'
 
 @Component
-export default class Transform extends Vue {
+export default class VueComponent extends Vue {
     @Prop() private app!: App
     @Prop() private scene!: View
     @Prop() private body!: View

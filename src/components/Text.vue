@@ -22,7 +22,7 @@ import App from '@/App/App'
 import View from '@/View/View'
 
 @Component
-export default class Dataset extends Vue {
+export default class VueComponent extends Vue {
     @Prop() private app!: App
     @Prop() private scene!: View
     @Prop() private body!: View
@@ -31,8 +31,8 @@ export default class Dataset extends Vue {
      * @description         주어진 값을 텍스트 사이즈에 사용할 수 있는 형식으로 변환합니다.
      */
     private parseTextSize(v: string | number): string | number {
-        v = Number(v)
-        return isNaN(v) ? v : `${v}px`
+        const r = Number(v)
+        return isNaN(r) ? v : `${r}px`
     }
 }
 </script>

@@ -13,7 +13,7 @@ export default class App extends Vue {
         const app: WeJS.App = new App // 새로운 viewport 만들기
         const scene: WeJS.Scene3d = new Scene3d // 새로운 씬
 
-        scene.onStart(() => {
+        scene.onStart(async (): Promise<void> => {
 
             const objectA: WeJS.Scene3d = new Scene3d // 씬에 들어갈 객체A
             const objectB: WeJS.View = new View // 객체A 하위에 들어갈 객체B
@@ -52,7 +52,7 @@ export default class App extends Vue {
 
         }).onDestroy(scene.clear)
 
-        Promise.resolve().then(async () => {
+        Promise.resolve().then(async (): Promise<void> => {
             // 앱이 부착될 element를 지정
             app.element = '#sample'
             app.size = [800, 500]

@@ -10,6 +10,8 @@ import Physics from './Physics'
 import Rect from './Rect'
 import Text from './Text'
 import Html from './Html'
+import Video from './Video'
+import Audio from './Audio'
 
 type ComponentMap = { [name in Reservation]: typeof Component }
 export const ReservationMap: ComponentMap = {
@@ -23,4 +25,6 @@ export const ReservationMap: ComponentMap = {
     [Reservation.Rect]: Rect,
     [Reservation.Text]: Text,
     [Reservation.Html]: Html,
+    [Reservation.Video]: Video,
+    [Reservation.Audio]: Audio,
 }

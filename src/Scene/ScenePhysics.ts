@@ -9,7 +9,7 @@ interface Gravity {
 }
 
 class ScenePhysics {
-    static readonly DefaultGravity: Gravity = { x: 0, y: 0.98, scale: 1 }
+    static readonly DefaultGravity: Gravity = { x: 0, y: 0.98, scale: 0.001 }
     private table: Map<Matter.Body, View> = new Map
     readonly collision: PhysicsCollision = new PhysicsCollision
     private runner: Matter.Runner = Matter.Runner.create()

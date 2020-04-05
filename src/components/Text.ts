@@ -7,8 +7,8 @@ export default class ComponentInterface extends Component {
     src: string | null = null
     width: 'auto' | number = 'auto'
     height: 'auto' | number = 'auto'
-    fontSize: 'medium' | 'xx-small' | 'x-small' | 'small' | 'large' | 'x-large' | 'xx-large' | 'smaller' | 'larger' | number = 'medium'
-    fontWeight: 'normal' | 'bold' | 'bolder' | 'lighter' | number = 'normal'
+    fontSize: number = 25
+    fontWeight: 'normal' | 'bold' | 'bolder' | 'lighter' | number = 400
     fontFamily: string = 'arial'
     fontStyle: 'normal' | 'italic' | 'oblique' = 'normal'
     lineHeight: 'normal' | number = 'normal'

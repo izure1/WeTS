@@ -1,6 +1,5 @@
 export enum Reservation {
-    // Animation   = 'animation',
-    // Audio       = 'audio',
+    Audio       = 'audio',
     Camera      = 'camera',
     Children    = 'children',
     Dataset     = 'dataset',
@@ -12,5 +11,5 @@ export enum Reservation {
     Rect        = 'rect',
     Text        = 'text',
     Transform   = 'transform',
-    // Video       = 'video',
+    Video       = 'video',
 }

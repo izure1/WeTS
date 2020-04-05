@@ -6,7 +6,8 @@ class PairsManager {
      */
     static create(...pairLists: string[][]): string[][] {
         const pairs: string[][] = []
-        for (const pair of pairLists) pairs.push(pair)
+        for (const pair of pairLists)
+            pairs.push(pair)
         return pairs
     }
 
@@ -25,7 +26,8 @@ class PairsManager {
         for (const key of allKeys) {
             for (const pair of pairs) {
                 const hasKey: boolean = pair.indexOf(key) !== -1
-                if (hasKey) lists.add(pair)
+                if (hasKey)
+                    lists.add(pair)
             }
         }
         // lists 변수에 담긴 페어 배열을 pairs 배열에서 삭제합니다.
@@ -35,7 +37,8 @@ class PairsManager {
             while (i--) {
                 if (pairs[i] === pair) {
                     pairs.splice(i, 1)
-                    for (const key of pair) totalKeys.add(key)
+                    for (const key of pair)
+                        totalKeys.add(key)
                 }
             }
         }
@@ -56,7 +59,8 @@ class PairsManager {
      */
     static all(pairs: string[][]): string[] {
         const lists: string[] = []
-        for (const pair of pairs) lists.push(...pair)
+        for (const pair of pairs)
+            lists.push(...pair)
         return [...new Set(lists)]
     }
 
@@ -68,8 +72,9 @@ class PairsManager {
      */
     static get(pairs: string[][], u: string): string[] {
         for (const pair of pairs) {
-            const hasKey: boolean = pair.indexOf(u) === -1
-            if (hasKey) return pair
+            const hasKey: boolean = pair.indexOf(u) !== -1
+            if (hasKey)
+                return pair
         }
         return [] as string[]
     }
@@ -110,7 +115,8 @@ class PairsManager {
         let i: number = pairs.length
         while (i--) {
             const hasKey = pairs[i].indexOf(u) !== -1
-            if (hasKey) pairs.splice(i, 1)
+            if (hasKey)
+                pairs.splice(i, 1)
         }
     }
 
@@ -134,7 +140,8 @@ class PairsManager {
         for (const u of [...keys]) {
             const keys: string[] = PairsManager.get(pairs, u)
             if (keys.length)
-                for (const key of keys) result.add(key)
+                for (const key of keys)
+                    result.add(key)
             else {
                 result.clear()
                 break
@@ -153,7 +160,8 @@ class PairsManager {
         const result: Set<string> = new Set
         for (const u of [...keys]) {
             const keys: string[] = PairsManager.get(pairs, u)
-            for (const key of keys) result.add(key)
+            for (const key of keys)
+                result.add(key)
         }
         return [...result]
     }

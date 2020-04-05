@@ -43,7 +43,7 @@ class Searcher {
      * @param v         검색할 HTMLElement 인스턴스입니다.
      * @description     검색할 인스턴스의 부모 HTMLElement 를 검색하여 반환합니다.
      */
-    static getParentElementFromChildren(v: null | HTMLElement): null | HTMLElement {
+    static getParentElementFromChildren(v: HTMLElement | null): HTMLElement | null {
         const bodyClassName: string = 'we-body'
         if (!(v instanceof HTMLElement))
             return null
