@@ -62,6 +62,8 @@ export default class App extends Vue {
                 ArrayExtra.add(physics.colliders, 'square')
 
                 filter.cursor = 'pointer'
+                audio.src = '/assets/audio/crash.mp3'
+
                 transform.x = this.getRandomNumber(-300, 300)
                 transform.y = 200
                 transform.y = this.getRandomNumber(300, 500)
