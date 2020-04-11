@@ -14,6 +14,7 @@ import ComponentList from '@/View/ComponentList'
 import Component from '@/View/Component'
 import ComponentFactory from '@/View/ComponentFactory'
 import { Reservation } from '@/Components/Reservation'
+import { EaseType } from '@/Utils/ease'
 
 export {
     ArrayExtra,
@@ -32,4 +33,5 @@ export {
     ComponentFactory,
     Matter,
     Reservation,
+    EaseType,
 }

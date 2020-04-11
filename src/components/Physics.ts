@@ -28,10 +28,10 @@ export default class ComponentInterface extends Component {
         Promise.resolve().then(async () => {
             await Component.waitAttached(this)
             const vue: any = this.vue!
-            const object: Matter.Body = vue.object
+            const object: Matter.Body = vue.physicsObject
             const position: Matter.Vector = object.position
             const dot: Matter.Vector = Matter.Vector.create(position.x, -position.y)
-            const force: Matter.Vector = Matter.Vector.create(x, y)
+            const force: Matter.Vector = Matter.Vector.create(x, -y)
             Matter.Body.applyForce(object, dot, force)
         })
     }
@@ -46,7 +46,7 @@ export default class ComponentInterface extends Component {
         Promise.resolve().then(async () => {
             await Component.waitAttached(this)
             const vue: any = this.vue!
-            const object: Matter.Body = vue.object
+            const object: Matter.Body = vue.physicsObject
             const velocity: Matter.Vector = Matter.Vector.create(x, -y)
             Matter.Body.setVelocity(object, velocity)
         })
@@ -61,7 +61,7 @@ export default class ComponentInterface extends Component {
         Promise.resolve().then(async () => {
             await Component.waitAttached(this)
             const vue: any = this.vue!
-            const object: Matter.Body = vue.object
+            const object: Matter.Body = vue.physicsObject
             Matter.Body.setAngularVelocity(object, velocity)
         })
     }

@@ -3,7 +3,7 @@ import { Random } from './MathUtil'
 interface Request {
     step: number
     interval: number
-    callback: Function
+    callback: (now: number, interval: number) => void
 }
 
 class Tick {
@@ -16,7 +16,7 @@ class Tick {
      * @param interval  callback 함수 호출 간격을 설정합니다. 지정하지 않는다면 매 프레임마다 호출될 것입니다.
      * @returns         콜백함수의 ID값을 반환합니다. 이후에 Tick.cancelRequest 함수의 인수로 ID값을 넘겨 제거할 수 있습니다.
      */
-    static request(callback: Function = function () {}, interval: number = 0): string {
+    static request(callback: ((now: number, interval: number) => void) = function () {}, interval: number = 0): string {
         const id: string = Random.shortid()
         const step: number = interval
         Tick.list.set(id, { step, interval, callback } as Request)

@@ -21,6 +21,12 @@
         <li>
             <a href="/Audio">Audio</a>
         </li>
+        <li>
+            <a href="/Youtube">Youtube</a>
+        </li>
+        <li>
+            <a href="/SceneDimension">SceneDimension</a>
+        </li>
     </ol>
 </template>
 

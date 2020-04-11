@@ -5,8 +5,8 @@
         v-if="isNeedFromScene(requiredLevels, body.level)" 
         :id="body.id" 
         :class="{
-            'scene2d': scene.type === SCENE_2D,
-            'scene3d': scene.type === SCENE_3D,
+            'scene2d': body.type === SCENE_2D,
+            'scene3d': body.type === SCENE_3D,
         }"
         :we-body-tag="body.tags.join(' ')"
         :we-body-size="sizeMax"
@@ -98,8 +98,8 @@
             class="we-camera"
             v-if="hasComponent('children')"
             :class="{
-                'scene2d': scene.type === SCENE_2D,
-                'scene3d': scene.type === SCENE_3D,
+                'scene2d': body.type === SCENE_2D,
+                'scene3d': body.type === SCENE_3D,
             }"
             :style="{ 
                 transform: `translate3d(

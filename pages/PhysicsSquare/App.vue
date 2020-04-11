@@ -75,6 +75,9 @@ export default class App extends Vue {
                 square.on('collisionEnd', (): void => {
                     filter.opacity = 1
                 })
+                square.on('click', (): void => {
+                    square.component.physics.applyForce(0, 0.05)
+                })
 
                 await scene.addScene(square)
             }

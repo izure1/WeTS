@@ -24,7 +24,7 @@ export default class VueComponent extends Vue {
     private readonly AssetLoader: typeof AssetLoader = AssetLoader
     private start: number = 0
     private video: Promise<HTMLVideoElement> = new Promise((resolve) => { this.setVideo = resolve })
-    private setVideo!: Function
+    private setVideo!: (video: HTMLVideoElement) => void
 
     /**
      * @description         주어진 값을 비디오 사이즈에 사용할 수 있는 형식으로 변환합니다.
@@ -55,7 +55,7 @@ export default class VueComponent extends Vue {
     }
 
     mounted() {
-        this.setVideo!(this.$el)
+        this.setVideo!(this.$el as HTMLVideoElement)
         this.body.component.video.emit('load')
     }
 }

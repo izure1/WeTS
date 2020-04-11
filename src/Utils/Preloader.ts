@@ -7,13 +7,13 @@ class Preloader {
      * @param preload   Promise를 반환하는 함수입니다.
      * @param params    preload 함수를 실행할 때 넘길 매개변수입니다.
      */
-    static waitPreload(preload: Function, ...params: any[]): Promise<any> {
+    static waitPreload<T>(preload: (...params: T[]) => Promise<any>, ...params: T[]): Promise<any> {
         return new Promise((resolve, reject) => {
             preload(...params).then(resolve).catch(reject)
         })
     }
 
-    static waitPreloads(preloads: Function[], ...params: any[]): Promise<any[]> {
+    static waitPreloads<T>(preloads: ((...params: T[]) => Promise<any>)[], ...params: T[]): Promise<any[]> {
         return new Promise((resolve, reject) => {
             const results: any[] = []
             for (const preload of preloads) {

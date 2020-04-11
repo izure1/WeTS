@@ -4,7 +4,6 @@ import ComponentData from '@/View/ComponentData'
 
 export default class ComponentInterface extends Component {
     readonly name: Reservation = Reservation.Text
-    src: string | null = null
     width: 'auto' | number = 'auto'
     height: 'auto' | number = 'auto'
     fontSize: number = 25

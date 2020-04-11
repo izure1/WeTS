@@ -62,5 +62,17 @@ module.exports = {
             title: 'Video',
             chunks: ['chunk-vendors', 'chunk-common', 'PhysicsSquare']
         },
+        Youtube: {
+            entry: 'pages/Youtube/main.ts',
+            template: 'public/index.html',
+            title: 'Video',
+            chunks: ['chunk-vendors', 'chunk-common', 'Youtube']
+        },
+        SceneDimension: {
+            entry: 'pages/SceneDimension/main.ts',
+            template: 'public/index.html',
+            title: 'Video',
+            chunks: ['chunk-vendors', 'chunk-common', 'SceneDimension']
+        },
     }
 }
