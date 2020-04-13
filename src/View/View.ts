@@ -2,7 +2,6 @@ import EventEmitter from 'eventemitter3'
 import { Random } from '@/Utils/MathUtil'
 import { Reservation } from '@/Components/Reservation'
 import Tick from '@/Utils/Tick'
-import Component from './Component'
 import ComponentList from './ComponentList'
 import ComponentFactory from './ComponentFactory'
 import LevelDesign from './LevelDesign'
@@ -91,7 +90,6 @@ class View extends EventEmitter {
     cycleUpdate(): string {
         return Tick.request((step: number, deltaTime: number) => {
             this.lifecycle.update.forEach(fn => fn(this.lifecycle.dataTransfer, deltaTime))
-            this.updateAnimation(deltaTime)
         })
     }
 
@@ -103,11 +101,6 @@ class View extends EventEmitter {
     cycleDestroy(tick: string): void {
         Tick.cancelRequest(tick)
         this.lifecycle.destroy.forEach(fn => fn(this.lifecycle.dataTransfer))
-    }
-
-    private updateAnimation(deltaTime: number): void {
-        for (const key in this.component)
-            Component.updateAnimation(this.component[key], deltaTime)
     }
 }
 

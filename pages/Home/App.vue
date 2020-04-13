@@ -27,6 +27,12 @@
         <li>
             <a href="/SceneDimension">SceneDimension</a>
         </li>
+        <li>
+            <a href="/Animation">Animation</a>
+        </li>
+        <li>
+            <a href="/Particle">Particle</a>
+        </li>
     </ol>
 </template>
 

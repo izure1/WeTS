@@ -74,5 +74,17 @@ module.exports = {
             title: 'Video',
             chunks: ['chunk-vendors', 'chunk-common', 'SceneDimension']
         },
+        Animation: {
+            entry: 'pages/Animation/main.ts',
+            template: 'public/index.html',
+            title: 'Animation',
+            chunks: ['chunk-vendors', 'chunk-common', 'Animation']
+        },
+        Particle: {
+            entry: 'pages/Particle/main.ts',
+            template: 'public/index.html',
+            title: 'Particle',
+            chunks: ['chunk-vendors', 'chunk-common', 'Particle']
+        },
     }
 }

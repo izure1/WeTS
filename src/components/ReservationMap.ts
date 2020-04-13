@@ -12,6 +12,7 @@ import Text from './Text'
 import Html from './Html'
 import Video from './Video'
 import Audio from './Audio'
+import Particle from './Particle'
 
 type ComponentMap = { [name in Reservation]: typeof Component }
 export const ReservationMap: ComponentMap = {
@@ -27,4 +28,5 @@ export const ReservationMap: ComponentMap = {
     [Reservation.Html]: Html,
     [Reservation.Video]: Video,
     [Reservation.Audio]: Audio,
+    [Reservation.Particle]: Particle,
 }

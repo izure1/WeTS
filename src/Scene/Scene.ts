@@ -39,12 +39,11 @@ class Scene extends View {
     /**
      * @description     씬의 모든 내용을 초기화합니다.
      */
-    clear(): Scene {
+    async clear(): Promise<void> {
         ArrayExtra.clear(this.component.children.lists)
         ArrayExtra.clear(this.particle.emitters)
         this.lifecycle.dataTransfer.clear()
         this.physics.stop()
-        return this
     }
 
     /**
@@ -76,8 +75,6 @@ class Scene extends View {
     async launch(...scenes: View[]) {
         ArrayExtra.clear(this.component.children.lists)
         await Promise.all(scenes.map(scene => this.addScene(scene)))
-        // TODO
-        // return this.app
     }
 }
 

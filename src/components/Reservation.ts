@@ -6,7 +6,7 @@ export enum Reservation {
     Filter          = 'filter',
     Html            = 'html',
     Image           = 'image',
-    // Particle     = 'particle',
+    Particle        = 'particle',
     Physics         = 'physics',
     Rect            = 'rect',
     Text            = 'text',

@@ -7,8 +7,6 @@ import Sleep from '@/Utils/Sleep'
 import screenfull from 'screenfull'
 import App from './App.vue'
 
-type Vector = [number, number]
-
 class WeApp extends Scene3d {
     private width: number = 800
     private height: number = 450
@@ -25,11 +23,11 @@ class WeApp extends Scene3d {
         return this.app.$el
     }
 
-    get size(): Vector {
+    get size(): [number, number] {
         return [this.width, this.height]
     }
 
-    set size(v: Vector) {
+    set size(v: [number, number]) {
         this.width = v[0]
         this.height = v[1]
     }
@@ -77,3 +75,29 @@ class WeApp extends Scene3d {
 }
 
 export default WeApp
+
+
+// var a = new WeApp
+// Component.setAnimation(a.component.audio, 'playbackRate', 2, 1000).then((current: number): void => {
+//     a.component.audio.
+// })
+
+// var a = new AnimationRunner
+// a.setAnimation(1, 2, 1000, EaseType.Linear).render((current: number, progress: number): void => {
+//     a.component.audio.playbackRate = current
+// })
+
+// Component.setAnimation(a.component.audio, 'playbackRate', 2, 1000) // 이게 호출된 시점에서 값은 즉시 변경되어야 합니다.
+// 하지만 이걸 중간에서 가로채는 프록시 객체가 생성되어야 합니다.
+// 저장은 프록시 객체가 합니다. 중간에서 가로채는 프록시 객체는 렌더링과 연결되어 있어야 합니다.
+// 프록시 객체를 vue 파일로 대체하면 딱 좋습니다.
+// vue 파일은 마운트되면 프록시 객체를 생성하여 body에 저장해야 합니다...
+// 컴포넌트가 추가되면, 애니메이션 객체를 받아오고, 애니메이션 객체는 컴포넌트의 모든 정보를 복사해옵니다.
+// 
+
+// 애니메이션 진행 정도는 저장되지 않습니다...?
+// 콜백은 저장되지 않습니다...
+// 이런 방식은 다 좋긴한데 애니메이션 도중은 저장되지 않으니, 그게 문제.
+
+// private component.animation: object
+// component constructor(): void { for (const key in this) this.animation[key] = this[key] }

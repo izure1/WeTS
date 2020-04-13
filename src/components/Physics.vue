@@ -5,7 +5,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 import Matter from 'matter-js'
-import MatterExtra from '@/Utils/MatterExtra'
+import * as MatterExtra from '@/Utils/MatterExtra'
 import WeComponent from '@/View/Component'
 import App from '@/App/App'
 import Scene from '@/Scene/Scene'

@@ -19,7 +19,6 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-//import Matter from 'matter-js'
 import AssetLoader from '@/Asset/AssetLoader'
 import ParticleBody from '@/Particle/ParticleBody'
 import App from '@/App/App'

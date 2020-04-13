@@ -112,13 +112,13 @@
             }"
         >
             <!-- 파티클을 보여줍니다. 이 기능은 물리효과를 필요로 하기 때문에, 객체의 타입이 씬일 경우에만 동작합니다. -->
-            <!-- <particle-renderer
+            <view-particle-renderer
                 v-if="isScene"
                 :emitters="body.particle.emitters"
                 :app="app"
                 :scene="scene"
                 :body="body"
-            /> -->
+            />
             <!-- 자식 객체를 보여줍니다 -->
             <we-body
                 v-for="children in body.component.children.lists"
@@ -140,10 +140,10 @@ import { Compare } from '@/Utils/MathUtil'
 import LevelDesign from '@/View/LevelDesign'
 import App from '@/App/App'
 import View from '@/View/View'
+import ViewParticleRenderer from '@/View/ViewParticleRenderer.vue'
 import WeComponent from '@/View/Component'
 import Scene from '../Scene/Scene'
 import { SceneType } from '@/Scene/SceneType'
-import ParticleRenderer from '@/Components/ParticleRenderer.vue'
 import ComponentImage from '@/Components/Image.vue'
 import ComponentVideo from '@/Components/Video.vue'
 import ComponentAudio from '@/Components/Audio.vue'
@@ -151,13 +151,14 @@ import ComponentPhysics from '@/Components/Physics.vue'
 import ComponentRect from '@/Components/Rect.vue'
 import ComponentText from '@/Components/Text.vue'
 import ComponentHtml from '@/Components/Html.vue'
+import ComponentParticle from '@/Components/Particle.vue'
 
 type Vector = [number, number]
 
 @Component({
     name: 'WeBody',
     components: {
-        ParticleRenderer,
+        ViewParticleRenderer,
         ComponentImage,
         ComponentVideo,
         ComponentAudio,
@@ -165,6 +166,7 @@ type Vector = [number, number]
         ComponentRect,
         ComponentText,
         ComponentHtml,
+        ComponentParticle,
     }
 })
 export default class WeBody extends Vue {

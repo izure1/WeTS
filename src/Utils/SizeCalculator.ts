@@ -57,7 +57,7 @@ class VideoSize extends ElementSize {
     static async calc(src: string): Promise<IVector> {
         const { tag, x, y } = VideoSize
         const element: HTMLElement = ElementSize.createElement(tag)
-        return await ElementSize.getSize(tag, src, x, y)
+        return await ElementSize.getSize(element, src, x, y)
     }
 }
 

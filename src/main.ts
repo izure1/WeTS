@@ -6,6 +6,7 @@ import AssetLoader from '@/Asset/AssetLoader'
 import Searcher from '@/Utils/Searcher'
 import Sleep from '@/Utils/Sleep'
 import Tick from '@/Utils/Tick'
+import AnimationRunner from '@/Utils/AnimationRunner'
 import App from '@/App/App'
 import Scene2d from '@/Scene/Scene2d'
 import Scene3d from '@/Scene/Scene3d'
@@ -24,6 +25,7 @@ export {
     Searcher,
     Sleep,
     Tick,
+    AnimationRunner,
     App,
     Scene2d,
     Scene3d,

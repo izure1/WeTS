@@ -33,4 +33,4 @@ class Body {
     }
 }
 
-export default { Vertices, Body }
+export { Vertices, Body }

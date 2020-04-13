@@ -12,8 +12,8 @@ class ScenePhysics {
     static readonly DefaultGravity: Gravity = { x: 0, y: 0.98, scale: 0.001 }
     private table: Map<Matter.Body, View> = new Map
     readonly collision: PhysicsCollision = new PhysicsCollision
-    private runner: Matter.Runner = Matter.Runner.create()
-    private engine: Matter.Engine = Matter.Engine.create()
+    readonly runner: Matter.Runner = Matter.Runner.create()
+    readonly engine: Matter.Engine = Matter.Engine.create()
     readonly world: Matter.World = this.engine.world
 
     /**
