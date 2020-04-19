@@ -9,10 +9,12 @@
             fontStyle: body.component.text.fontStyle,
             color: body.component.text.color,
             textAlign: body.component.text.textAlign,
+            textDecoration: body.component.text.textDecoration,
             lineHeight: body.component.text.lineHeight,
             textStroke: `${body.component.text.fontSize / 20}px ${body.component.text.borderColor}`,
             letterSpacing: `${body.component.text.letterSpacing}px`,
             wordSpacing: `${body.component.text.wordSpacing}px`,
+            whiteSpace: body.component.text.whiteSpace,
         }">{{ body.component.text.content }}</div>
 </template>
 

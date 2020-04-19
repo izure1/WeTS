@@ -123,7 +123,7 @@ export default class VueComponent extends Vue {
             this.scene.physics.collision.addCollider(collider)
 
         // 등록된 콜라이더를 순회하여 관련있는 모든 콜라이더를 받아옵니다.
-        const all: string[] = Pairs.getOr(this.scene.physics.collision.collisions, ...colliders)
+        const all: string[] = Pairs.getAnd(this.scene.physics.collision.collisions, ...colliders)
         // 관련 있는 모든 콜라이더로부터 충돌 필터값을 계산합니다.
         this.collision = this.scene.physics.collision.between(...all)
     }

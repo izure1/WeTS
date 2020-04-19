@@ -23,6 +23,7 @@ export default class App extends Vue {
 
         app.onPreload(async (): Promise<void> => {
             AssetLoader.add('/assets/audio/crash.mp3', 'audio/mp3')
+            AssetLoader.add('/assets/image/particle_flame.png', 'image/png')
             await AssetLoader.load()
         })
 
@@ -82,9 +83,18 @@ export default class App extends Vue {
                 await scene.addScene(square)
             }
 
+            const test: WeJS.View = new View
+            ComponentList.add(test.component, ComponentFactory.create(Reservation.Particle))
+            test.component.particle.src = '/assets/image/particle_flame.png'
+            test.component.particle.quantity = 1
+            ArrayExtra.add(test.component.particle.colliders, 'particle')
+
+            await scene.addScene(test)
+
             // 충돌 관계를 지정합니다.
             // 이 경우, square 콜라이더와 ground를 콜라이더를 가지는 객체끼리 충돌할 것입니다.
             scene.physics.collision.addCollision('square', 'ground')
+            scene.physics.collision.addCollision('square', 'particle')
 
         }).onDestroy(scene.clear)
 

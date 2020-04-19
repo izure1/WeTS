@@ -54,6 +54,7 @@ export default class App extends Vue {
             const object: WeJS.View = new View
             ComponentList.add(object.component, ComponentFactory.create(Reservation.Text))
             object.component.text.content = 'Click me!'
+            object.component.text.whiteSpace = 'nowrap'
             // View 인스턴스를 클릭하면 x좌표를 입력값 만큼 증가시킵니다.
             // 애니메이션 기능을 이용하여 부드럽게 이동하게 만듭니다.
             object.on('click', (): void => {
@@ -65,7 +66,7 @@ export default class App extends Vue {
                 AnimationRunner.create(x, next, this.duration, this.ease).run((current: number, progress: number): void => {
                     // 애니메이션이 진행 중이면, View 인스턴스의 좌표값을 수정합니다.
                     object.component.transform.x = current
-                    object.component.text.content = `Current X: ${~~current}`
+                    object.component.text.content = `Current X : ${~~current}`
                     this.progress = progress
                 }).then((animation: WeJS.AnimationRunner): void => {
                     // 애니메이션이 완료되면 애니메이션을 파괴합니다.

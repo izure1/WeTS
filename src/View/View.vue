@@ -11,6 +11,8 @@
         :we-body-tag="body.tags.join(' ')"
         :we-body-size="sizeMax"
         :style="{
+            width:  parseBodySize(body.component.transform.width),
+            height: parseBodySize(body.component.transform.height),
             backgroundColor: body.component.filter.backgroundColor,
             transition: `
                 all
@@ -196,6 +198,14 @@ export default class WeBody extends Vue {
 
     get isScene(): boolean {
         return this.body instanceof Scene
+    }
+
+    /**
+     * @description         주어진 값을 View 인스턴스 사이즈에 사용할 수 있는 형식으로 변환합니다.
+     */
+    parseBodySize(v: string | number): string | number {
+        const r = Number(v)
+        return isNaN(r) ? v : `${r}px`
     }
 
     /**

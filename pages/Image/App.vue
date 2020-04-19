@@ -9,7 +9,7 @@ import * as WeJS from '../../src/main'
 @Component
 export default class App extends Vue {
     mounted() {
-        const { AssetLoader, AnimationRunner, App, Scene3d, View, ComponentList, ComponentFactory, Reservation } = WeJS
+        const { AssetLoader, App, Scene3d, View, ComponentList, ComponentFactory, Reservation } = WeJS
         const app: WeJS.App = new App
         const scene: WeJS.Scene3d = new Scene3d
 
@@ -34,19 +34,7 @@ export default class App extends Vue {
             // 객체의 이미지 넓이를 지정합니다.
             image.component.image.width = 400
             // 씬에 객체를 추가합니다.
-            scene.launch(image)
-
-            image.on('click', (): void => {
-                const x: number = image.component.transform.x
-                AnimationRunner.create(x, x + 100, 1000, WeJS.EaseType.EaseOutExpo).run((current: number, progress: number): void => {
-                    image.component.transform.x = current
-                    console.log(current, progress)
-                }).then((animation: WeJS.AnimationRunner): void => {
-                    AnimationRunner.destroy(animation)
-                })
-            })
-
-            window.image = image
+            await scene.launch(image)
 
         }).onDestroy(scene.clear)
 

@@ -10,13 +10,15 @@ export default class ComponentInterface extends Component {
     fontWeight: 'normal' | 'bold' | 'bolder' | 'lighter' | number = 400
     fontFamily: string = 'arial'
     fontStyle: 'normal' | 'italic' | 'oblique' = 'normal'
+    textDecoration: 'none' | 'line-through' | 'overline' | 'underline' = 'none'
     lineHeight: 'normal' | number = 'normal'
     letterSpacing: number = 0
     wordSpacing: number = 0
-    content: string = ''
+    whiteSpace: 'normal' | 'nowrap' | 'pre' | 'pre-line' | 'pre-wrap' = 'normal'
     textAlign: 'left' | 'center' | 'right' = 'left'
     borderColor: string = 'transparent'
     color: string = 'black'
+    content: string = ''
 
     constructor(data: ComponentData) {
         super(data)

@@ -11,6 +11,8 @@ export default class ComponentInterface extends Component {
     rotateY: number = 0
     rotateZ: number = 0
     scale: number = 1
+    width: 'auto' | number = 'auto'
+    height: 'auto' | number = 'auto'
 
     constructor(data: ComponentData) {
         super(data)
