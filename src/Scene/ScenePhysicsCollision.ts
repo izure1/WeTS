@@ -1,6 +1,6 @@
 import EventEmitter from 'eventemitter3'
-import ArrayExtra from '@/Utils/ArrayExtra'
-import Pairs from '@/Utils/Pairs'
+import ArrayExtra from '../Utils/ArrayExtra'
+import Pairs from '../Utils/Pairs'
 
 class PhysicsCollision extends EventEmitter {
     static readonly DefaultCollider: string = 'default'

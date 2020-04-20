@@ -1,4 +1,4 @@
-import View from '@/View/View';
+import View from '../View/View';
 declare class Searcher {
     /**
      *

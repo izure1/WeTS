@@ -1,4 +1,4 @@
-import { EaseType } from '@/Utils/ease';
+import { EaseType } from '../Utils/ease';
 declare class AnimationRunner {
     private start;
     private end;

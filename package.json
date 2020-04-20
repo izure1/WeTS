@@ -1,10 +1,10 @@
 {
   "name": "vve",
-  "version": "0.1.0",
+  "version": "0.1.7",
   "main": "dist/lib/WeJS.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name WeJS ./src/main.ts --inline-vue",
+    "build": "vue-cli-service build --target lib --name WeJS ./src/index.ts --inline-vue",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

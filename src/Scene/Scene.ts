@@ -1,10 +1,10 @@
-import { Reservation } from '@/Components/Reservation'
-import View from '@/View/View'
-import ComponentList from '@/View/ComponentList'
-import ComponentFactory from '@/View/ComponentFactory'
+import { Reservation } from '../Components/Reservation'
+import View from '../View/View'
+import ComponentList from '../View/ComponentList'
+import ComponentFactory from '../View/ComponentFactory'
 import ScenePhysics from './ScenePhysics'
-import ArrayExtra from '@/Utils/ArrayExtra'
-import Preloader from '@/Utils/Preloader'
+import ArrayExtra from '../Utils/ArrayExtra'
+import Preloader from '../Utils/Preloader'
 import SceneParticle from './SceneParticle'
 
 class Scene extends View {

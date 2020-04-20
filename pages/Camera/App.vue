@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import * as WeJS from '../../src/main'
+import * as WeJS from '../../src/index'
 
 @Component
 export default class App extends Vue {

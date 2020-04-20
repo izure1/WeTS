@@ -1,5 +1,5 @@
-import ease, { EaseType } from '@/Utils/ease'
-import Tick from '@/Utils/Tick'
+import ease, { EaseType } from '../Utils/ease'
+import Tick from '../Utils/Tick'
 
 class AnimationRunner {
     private start: number = 0

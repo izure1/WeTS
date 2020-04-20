@@ -5,13 +5,13 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 import Matter from 'matter-js'
-import * as MatterExtra from '@/Utils/MatterExtra'
-import WeComponent from '@/View/Component'
-import App from '@/App/App'
-import Scene from '@/Scene/Scene'
-import View from '@/View/View'
-import PhysicsCollision from '@/Scene/ScenePhysicsCollision'
-import Pairs from '@/Utils/Pairs'
+import * as MatterExtra from '../Utils/MatterExtra'
+import WeComponent from '../View/Component'
+import App from '../App/App'
+import Scene from '../Scene/Scene'
+import View from '../View/View'
+import PhysicsCollision from '../Scene/ScenePhysicsCollision'
+import Pairs from '../Utils/Pairs'
 import { Angle } from '../Utils/MathUtil'
 
 @Component

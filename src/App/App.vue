@@ -43,8 +43,8 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import WeBody from '@/View/View.vue'
-import LevelDesign from '@/View/LevelDesign'
+import WeBody from '../View/View.vue'
+import LevelDesign from '../View/LevelDesign'
 import ResizeObserver from 'resize-observer-polyfill'
 import screenfull from 'screenfull'
 import WeApp from './App'

@@ -1,4 +1,4 @@
-import View from '@/View/View';
+import View from '../View/View';
 import ScenePhysics from './ScenePhysics';
 import SceneParticle from './SceneParticle';
 declare class Scene extends View {

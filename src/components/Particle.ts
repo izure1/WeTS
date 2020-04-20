@@ -1,8 +1,8 @@
 import { Reservation } from './Reservation'
 import Component from '../View/Component'
-import ComponentData from '@/View/ComponentData'
-import EmitterOption from '@/Particle/EmitterOption'
-import ParticleOption from '@/Particle/ParticleOption'
+import ComponentData from '../View/ComponentData'
+import EmitterOption from '../Particle/EmitterOption'
+import ParticleOption from '../Particle/ParticleOption'
 
 export default class ComponentInterface extends Component implements EmitterOption, ParticleOption {
     private static EmptyImage: string = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='

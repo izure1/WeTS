@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import Scene from '@/Scene/Scene';
-import Scene3d from '@/Scene/Scene3d';
+import Scene from '../Scene/Scene';
+import Scene3d from '../Scene/Scene3d';
 declare class WeApp extends Scene3d {
     private width;
     private height;

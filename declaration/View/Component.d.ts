@@ -1,6 +1,6 @@
 import EventEmitter from 'eventemitter3';
 import ComponentData from './ComponentData';
-import { Reservation } from '@/Components/Reservation';
+import { Reservation } from '../Components/Reservation';
 declare class Component extends EventEmitter implements ComponentData {
     vue: Vue.Component | null;
     private vue_ready;

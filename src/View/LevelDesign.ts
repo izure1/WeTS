@@ -1,8 +1,6 @@
-type Level = string[]
-
 class LevelDesign {
     static readonly PersistentLevel: string = 'main';
-    [key: string]: Level
+    [key: string]: string[]
     
     /**
      * 
@@ -10,7 +8,7 @@ class LevelDesign {
      * @param name              해당 레벨 이름입니다.
      * @param inheritLevels     해당 레벨을 상속받는 레벨들입니다.
      */
-    static set(design: LevelDesign, name: string, inheritLevels: Level = []): void {
+    static set(design: LevelDesign, name: string, inheritLevels: string[] = []): void {
         design[name] = [...inheritLevels]
     }
 
@@ -30,7 +28,7 @@ class LevelDesign {
      * @param name              해당 레벨 이름입니다.
      * @description             해당 레벨을 가지고 있다면 레벨들을 배열로 반환합니다. 없다면 null을 반환합니다.
      */
-    static get(design: LevelDesign, name: string): Level | null {
+    static get(design: LevelDesign, name: string): string[] | null {
         return LevelDesign.has(design, name) ? design[name] : null
     }
 
@@ -51,7 +49,7 @@ class LevelDesign {
      * @param name              해당 레벨 이름입니다.
      * @description             해당 레벨을 필요로 하는 모든 레벨들을 배열로 반환합니다.
      */
-    static getRequireds(design: LevelDesign, name: string): Level {
+    static getRequireds(design: LevelDesign, name: string): string[] {
         const dependencies = LevelDesign.getRequiredSelf(design, name, new Set)
         return [...dependencies].sort()
     }

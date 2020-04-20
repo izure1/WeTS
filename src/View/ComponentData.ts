@@ -1,4 +1,4 @@
-import { Reservation } from '@/Components/Reservation'
+import { Reservation } from '../Components/Reservation'
 
 interface ComponentData {
     name: Reservation

@@ -1,7 +1,7 @@
 import { Reservation } from './Reservation';
-import { EaseType } from '@/Utils/ease';
-import Component from '@/View/Component';
-import ComponentData from '@/View/ComponentData';
+import { EaseType } from '../Utils/ease';
+import Component from '../View/Component';
+import ComponentData from '../View/ComponentData';
 import TransitionOption from './TransitionOption';
 export default class ComponentInterface extends Component implements TransitionOption {
     readonly name: Reservation;

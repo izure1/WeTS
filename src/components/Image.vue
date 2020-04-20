@@ -24,9 +24,9 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import AssetLoader from '@/Asset/AssetLoader'
-import App from '@/App/App'
-import View from '@/View/View'
+import AssetLoader from '../Asset/AssetLoader'
+import App from '../App/App'
+import View from '../View/View'
 
 @Component
 export default class VueComponent extends Vue {

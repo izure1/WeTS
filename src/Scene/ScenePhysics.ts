@@ -1,5 +1,5 @@
 import Matter from 'matter-js'
-import View from '@/View/View'
+import View from '../View/View'
 import PhysicsCollision from './ScenePhysicsCollision'
 
 interface Gravity {

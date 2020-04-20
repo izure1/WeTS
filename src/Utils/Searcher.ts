@@ -1,6 +1,6 @@
-import View from '@/View/View'
-import Component from '@/View/Component'
-import ArrayExtra from '@/Utils/ArrayExtra'
+import View from '../View/View'
+import Component from '../View/Component'
+import ArrayExtra from '../Utils/ArrayExtra'
 
 class Searcher {
     /**

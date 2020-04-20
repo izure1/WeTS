@@ -2,3 +2,6 @@ node_modules
 pages
 public
 src
+vue.config.js
+babel.config.js
+tsconfig.json

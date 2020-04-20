@@ -6,12 +6,12 @@
 const path = require('path')
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 import { Howl } from 'howler'
-import Asset from '@/Asset/Asset'
-import AssetLoader from '@/Asset/AssetLoader'
-import Searcher from '@/Utils/Searcher'
-import App from '@/App/App'
-import View from '@/View/View'
-import WeComponent from '@/View/Component'
+import Asset from '../Asset/Asset'
+import AssetLoader from '../Asset/AssetLoader'
+import Searcher from '../Utils/Searcher'
+import App from '../App/App'
+import View from '../View/View'
+import WeComponent from '../View/Component'
 
 interface HowlerConfig {
     coneInnerAngle: number

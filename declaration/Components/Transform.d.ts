@@ -1,6 +1,6 @@
 import { Reservation } from './Reservation';
-import Component from '@/View/Component';
-import ComponentData from '@/View/ComponentData';
+import Component from '../View/Component';
+import ComponentData from '../View/ComponentData';
 export default class ComponentInterface extends Component {
     readonly name: Reservation;
     x: number;
@@ -9,5 +9,8 @@ export default class ComponentInterface extends Component {
     rotateX: number;
     rotateY: number;
     rotateZ: number;
+    scale: number;
+    width: 'auto' | number;
+    height: 'auto' | number;
     constructor(data: ComponentData);
 }
