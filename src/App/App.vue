@@ -2,6 +2,7 @@
     <section
         class="wejs-app"
         tabindex="0"
+        ref="rootElement"
         :style="{
             width: `${app.width}px`,
             height: `${app.height}px`,
@@ -36,69 +37,77 @@
             :app="app"
             :scene="app"
             :body="app"
-            :requiredLevels="LevelDesign.getRequireds(app.levelDesign, app.level)"
+            :requiredLevels="Design.getRequireds(app.levelDesign, app.level)"
             :style="{ perspective: `${app.perspective}px` }" />
     </section>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { defineComponent, Ref, ref, onBeforeMount, onMounted, onBeforeUnmount } from 'vue'
 import WeBody from '../View/View.vue'
 import LevelDesign from '../View/LevelDesign'
 import ResizeObserver from 'resize-observer-polyfill'
 import screenfull from 'screenfull'
 import WeApp from './App'
 
-@Component({
-    components: { WeBody }
+export default defineComponent({
+    components: { WeBody },
+    props: {
+        app: { type: WeApp, required: true }
+     },
+    setup(props) {
+        let resizeObserver: ResizeObserver | null = null
+        const rootElement: Ref = ref()
+        const Design: typeof LevelDesign = LevelDesign
+        const appScale: Ref<number> = ref(1)
+
+        /**
+         * @description         사용자 입력 이벤트를 발생시킵니다.
+         */
+        const emitUserInput = (e: Event): void => {
+            props.app!.emit(e.type, e)
+        }
+
+        /**
+         * @description         스크린 크기가 변경되었을 때, 전체적인 앱의 크기를 재조정합니다.
+         */
+        const onScreenChange = (): void => {
+            if (screenfull.isEnabled) {
+                if (screenfull.isFullscreen) appScale.value = 1
+            }
+            else {
+                const size: [number, number] = props.app.size
+                const appWidth: number = size[0]
+                const appHeight: number = size[1]
+                const screenWidth: number = screen.width
+                const screenHeight: number = screen.height
+                const scaleX = screenWidth / appWidth
+                const scaleY = screenHeight / appHeight
+                appScale.value = scaleX > scaleY ? scaleX : scaleY
+            }
+        }
+
+        onBeforeMount((): void => {
+            resizeObserver = new ResizeObserver(onScreenChange)
+        })
+
+        onMounted((): void => {
+            resizeObserver!.observe(rootElement.value)
+        })
+
+        onBeforeUnmount((): void => {
+            if (resizeObserver) {
+                resizeObserver.disconnect()
+                resizeObserver = null
+            }
+        })
+
+        return {
+            Design, rootElement, appScale,
+            emitUserInput, onScreenChange,
+        }
+    }
 })
-export default class App extends Vue {
-    @Prop() private app!: WeApp
-    private LevelDesign: typeof LevelDesign = LevelDesign
-    private resizeObserver: ResizeObserver | null = null
-    private appScale: number = 1
-
-    /**
-     * @description     사용자 입력 이벤트를 발생시킵니다.
-     */
-    private emitUserInput(e: Event): void {
-        this.app.emit(e.type, e)
-    }
-
-    /**
-     * @description     스크린 크기가 변경되었을 때, 전체적인 앱의 크기를 재조정합니다.
-     */
-    private onScreenChange(): void {
-        if (screenfull.isEnabled) {
-            if (screenfull.isFullscreen)
-                this.appScale = 1
-        }
-        else {
-            const size: [number, number] = this.app.size
-            const appWidth: number = size[0]
-            const appHeight: number = size[1]
-            const screenWidth: number = screen.width
-            const screenHeight: number = screen.height
-            const scaleX = screenWidth / appWidth
-            const scaleY = screenHeight / appHeight
-            this.appScale = scaleX > scaleY ? scaleX : scaleY
-        }
-    }
-
-    created() {
-        this.resizeObserver = new ResizeObserver(this.onScreenChange)
-    }
-
-    mounted() {
-        this.resizeObserver!.observe(this.$el)
-    }
-
-    beforeDestroy() {
-        if (this.resizeObserver)
-            this.resizeObserver!.disconnect()
-        this.resizeObserver = null
-    }
-}
 </script>
 
 <style lang="scss" scoped>
